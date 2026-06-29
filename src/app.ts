@@ -14,12 +14,16 @@ import commentRouter from './routes/commentRouter';
 import achievementRouter from "./routes/achievementRouter"
 import favoriteRouter from './routes/favoriteRouter';
 import { errorHandler } from './middlewares/error';
-
+import { connectDB } from "./config/db";
 const app: Application = express();
+
+
 
 app.use(helmet());
 app.use(compression());
-
+connectDB().catch((err) => {
+  console.error("Failed to connect to MongoDB:", err);
+});
 const productionOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 const allowedOrigins = [
   'http://localhost:3000',
