@@ -28,7 +28,7 @@ const productionOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIG
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
-  ...productionOrigins
+  'https://virt-mu.vercel.app'
 ];
 
 app.use(
